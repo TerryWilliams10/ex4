@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+    stages{
+        stage('Genrate and publish'){
+            steps{
+                sh 'mkdir -p site'
+                writeFile file : 'site/index.html', text: """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>WELCOME TO DEVOPS LAB WITH REAGRDS URK22CS1123</h2>
+</body>
+</html>
+"""
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'site',
+                    reportFiles: 'index.html',
+                    reportName: 'Devops Lab-pipleine site'
+                ])
+            }
+        }
+    }
+    post{
+        always{
+            archiveArtifacts artifacts: 'site/', fingerprint: true
+        }
+    }
+}
