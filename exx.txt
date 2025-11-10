@@ -13,4 +13,13 @@ Restart Jenkins if prompted.
 Step 3: Create the Pipeline Job
 In Jenkins, click New Item → select Pipeline → name it karunya-site-pipeline .
 Scroll to Pipeline → Definition and select Pipeline script.
+
 Paste the following script:
+
+
+Step 4: Run and View the Website
+Click Build Now.
+After success, go to the build page.
+On the left menu, click Karunya University - Simple Site.
+You should see the static site rendered inside Jenkins.
+Alternatively, download the archived artifact (the site/ folder) and open index.html locally.
